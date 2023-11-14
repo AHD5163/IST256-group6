@@ -1,22 +1,135 @@
-﻿
-@{
-	ViewData["Title"] = "Home Page";
-}
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
 
-<div>
-	<h1 class="display-4">Your Team</h1>
-	<p>
-		This is your Home Page
-	</p>
-	<div class="row">
-		<div class="col-4">
-			Boot Strap column 1
-		</div>
-		<div class="col-4">
-			Boot Strap column 2
-		</div>
-		<div class="col-4">
-			Boot Strap column 3
-		</div>
-	</div>
-</div>
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .header {
+            background-color: #3498db;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .game-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .game {
+            width: 300px;
+            margin: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #ecf0f1;
+            transition: transform 0.3s;
+        }
+
+        .game:hover {
+            transform: scale(1.05);
+        }
+
+        .game img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .game h3 {
+            color: #e74c3c;
+            margin-bottom: 10px;
+        }
+
+        .game p {
+            color: #34495e;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            background-color: #3498db;
+            padding: 20px;
+            border-radius: 10px;
+            color: #fff;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Welcome to Team 6's Video Game Store</h1>
+            <p>Explore the latest and greatest video games!</p>
+        </div>
+
+        <div class="game-container">
+            <div class="game">
+                <img src="witcher.jpg" alt="Game 1">
+                <h3>The Witcher 3: Wild Hunt</h3>
+                <p>An action role-playing game set in an open world, developed by CD Projekt.</p>
+                <p>Platform: PlayStation 4, Xbox One, Microsoft Windows</p>
+            </div>
+
+            <div class="game">
+                <img src="RedDedRedemption.jpg" alt="Game 2">
+                <h3>Red Dead Redemption 2</h3>
+                <p>An action-adventure game developed and published by Rockstar Games.</p>
+                <p>Platform: PlayStation 4, Xbox One, Microsoft Windows</p>
+            </div>
+
+            <div class="game">
+                <img src="AssassinsCreed.jpg" alt="Game 3">
+                <h3>Assassin's Creed Valhalla</h3>
+                <p>An action role-playing game developed by Ubisoft, set in the Viking Age.</p>
+                <p>Platform: PlayStation 5, Xbox Series X/S, PlayStation 4, Xbox One, Microsoft Windows</p>
+            </div>
+
+            <div class="game">
+                <img src="Cyberpunk.jpg" alt="Game 4">
+                <h3>Cyberpunk 2077</h3>
+                <p>An open-world action-adventure game developed by CD Projekt.</p>
+                <p>Platform: PlayStation 4, Xbox One, Microsoft Windows</p>
+            </div>
+
+            <div class="game">
+                <img src="CODMW.jpg" alt="Game 5">
+                <h3>Call of Duty: Modern Warfare</h3>
+                <p>A first-person shooter game developed by Infinity Ward.</p>
+                <p>Platform: PlayStation 4, Xbox One, Microsoft Windows</p>
+            </div>
+
+            <div class="game">
+                <img src="Spiderman.jpg" alt="Game 6">
+                <h3>Marvel's Spider-Man</h3>
+                <p>An action-adventure game based on the Marvel Comics character Spider-Man.</p>
+                <p>Platform: PlayStation 5</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2023 Team 6's Video Game Store</p>
+        </div>
+    </div>
+</body>
+</html>

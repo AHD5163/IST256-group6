@@ -62,7 +62,6 @@ namespace FinalProject.Web.Services
 			logger.LogDebug("sending message");
 			using SmtpClient client = new();
 			logger.LogDebug("Connecting to SMTP server");
-			client.Connect(mailSettings.SmtpServer, mailSettings.SmtpPort, false);
 			logger.LogDebug("sending");
 			try
 			{

@@ -1,0 +1,77 @@
+﻿@model IEnumerable<FinalProject.DAL.Models.Category>
+
+@{
+    ViewData["Title"] = "Welcome to the Video Game Store";
+}
+
+<style>
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .header {
+        background-color: #f4f4f4;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    .game-container {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    .game {
+        width: 300px;
+        margin: 20px;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .game img {
+        max-width: 100%;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+    .game h3 {
+        color: #333;
+    }
+
+    .game p {
+        color: #666;
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+</style>
+
+<div class="container">
+    <div class="header">
+        <h1>Welcome to our Video Game Store</h1>
+        <p>Explore the latest and greatest video games!</p>
+    </div>
+
+    <div class="game-container">
+        <div class="game">
+            <img src="https://example.com/game1.jpg" alt="Game 1">
+            <h3>The Witcher 3: Wild Hunt</h3>
+            <p>An action role-playing game set in an open world, developed by CD Projekt.</p>
+            <p>Platform: PlayStation 4, Xbox One, Microsoft Windows</p>
+        </div>
+
+        <div class="game">
+            <img src="https://example.com/game2.jpg" alt="Game 2">
+            <h3>Red Dead Redemption 2</h3>
+            <p>An action-adventure game developed and published by Rockstar Games.</p>
+            <p>Platform: PlayStation 4, Xbox One, Microsoft Windows</p>
+        </div>
+
+        <!-- Add more game entries as needed -->
+    </div>
+</div>
+

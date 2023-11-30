@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewData["Title"]</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
             background-color: #f5f5f5;
@@ -21,7 +23,7 @@
         }
 
         .header {
-            background-color: #3498db;
+            background-color: #de5920;
             padding: 20px;
             border-radius: 10px;
             margin-bottom: 30px;
@@ -81,49 +83,61 @@
         <div class="header">
             <h1>Welcome to Team 6's Video Game Store</h1>
             <p>Explore the latest and greatest video games!</p>
+            <a href="#" id="cartIcon" data-toggle="modal" data-target="#cartModal"><img src="ShoppingCart.png" alt="Shopping Cart"></a>
         </div>
 
         <div class="game-container">
             <div class="game">
-                <img src="witcher.jpg" alt="Game 1">
+                <img src="witcher.jpeg" alt="Game 1">
                 <h3>The Witcher 3: Wild Hunt</h3>
+                <p>Price: $49.99</p>
                 <p>An action role-playing game set in an open world, developed by CD Projekt.</p>
                 <p>Platform: PlayStation 4, Xbox One, Microsoft Windows</p>
+                <button class="btn btn-primary addToCart" data-game="The Witcher 3: Wild Hunt" data-price="49.99">Add to Cart</button>
             </div>
-
             <div class="game">
                 <img src="RedDedRedemption.jpg" alt="Game 2">
                 <h3>Red Dead Redemption 2</h3>
+                <p>Price: $59.99</p>
                 <p>An action-adventure game developed and published by Rockstar Games.</p>
                 <p>Platform: PlayStation 4, Xbox One, Microsoft Windows</p>
+                <button class="btn btn-primary addToCart" data-game="Red Dead Redemption 2" data-price="59.99">Add to Cart</button>
             </div>
 
             <div class="game">
                 <img src="AssassinsCreed.jpg" alt="Game 3">
                 <h3>Assassin's Creed Valhalla</h3>
+                <p>Price: $54.99</p>
                 <p>An action role-playing game developed by Ubisoft, set in the Viking Age.</p>
                 <p>Platform: PlayStation 5, Xbox Series X/S, PlayStation 4, Xbox One, Microsoft Windows</p>
+                <button class="btn btn-primary addToCart" data-game="Assassin's Creed Valhalla" data-price="54.99">Add to Cart</button>
             </div>
 
             <div class="game">
                 <img src="Cyberpunk.jpg" alt="Game 4">
                 <h3>Cyberpunk 2077</h3>
+                <p>Price: $39.99</p>
                 <p>An open-world action-adventure game developed by CD Projekt.</p>
                 <p>Platform: PlayStation 4, Xbox One, Microsoft Windows</p>
+                <button class="btn btn-primary addToCart" data-game="Cyberpunk 2077" data-price="39.99">Add to Cart</button>
             </div>
 
             <div class="game">
                 <img src="CODMW.jpg" alt="Game 5">
                 <h3>Call of Duty: Modern Warfare</h3>
+                <p>Price: $44.99</p>
                 <p>A first-person shooter game developed by Infinity Ward.</p>
                 <p>Platform: PlayStation 4, Xbox One, Microsoft Windows</p>
+                <button class="btn btn-primary addToCart" data-game="Call of Duty: Modern Warfare" data-price="44.99">Add to Cart</button>
             </div>
 
             <div class="game">
                 <img src="Spiderman.jpg" alt="Game 6">
                 <h3>Marvel's Spider-Man</h3>
+                <p>Price: $49.99</p>
                 <p>An action-adventure game based on the Marvel Comics character Spider-Man.</p>
                 <p>Platform: PlayStation 5</p>
+                <button class="btn btn-primary addToCart" data-game="Marvel's Spider-Man" data-price="49.99">Add to Cart</button>
             </div>
         </div>
 
@@ -131,5 +145,98 @@
             <p>&copy; 2023 Team 6's Video Game Store</p>
         </div>
     </div>
+
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    
+    <script>
+    var shoppingCart = [];
+
+    $('.addToCart').on('click', function () {
+        var gameTitle = $(this).data('game');
+        var gamePrice = $(this).data('price');
+
+        shoppingCart.push({
+            title: gameTitle,
+            price: gamePrice
+        });
+
+        alert(gameTitle + ' added to the cart!');
+    });
+
+    $('#cartIcon').on('click', function () {
+        displayShoppingCart();
+    });
+
+    function displayShoppingCart() {
+        $('#cartList').empty();
+
+        shoppingCart.forEach(function (item) {
+            $('#cartList').append('<li>' + item.title + ' - $' + item.price + '</li>');
+        });
+
+        $('#cartModal').modal('show');
+    }
+
+    function checkout() {
+        if (shoppingCart.length === 0) {
+            alert('Your shopping cart is empty!');
+            return;
+        }
+
+        var totalPrice = shoppingCart.reduce(function (total, item) {
+            return total + parseFloat(item.price);
+        }, 0);
+
+        var payment = prompt('Total Price: $' + totalPrice.toFixed(2) + '\nEnter payment amount:');
+
+        if (payment === null) {
+            return; // User clicked Cancel
+        }
+
+        var change = parseFloat(payment) - totalPrice;
+
+        if (change > 0) {
+            alert('Thank you for shopping at our video game store!\nYour change: $' + change.toFixed(2));
+        } else if (change < 0) {
+            alert('You need $' + (-change).toFixed(2) + ' more dollars.');
+        } else {
+            alert('Thank you for shopping at our video game store!');
+        }
+
+        // Clear the shopping cart after checkout
+        shoppingCart = [];
+        $('#cartModal').modal('hide');
+    }
+
+    function closeShoppingCart() {
+        $('#cartModal').modal('hide');
+    }
+</script>
+
+    <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="cartModalLabel">Shopping Cart</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <ul id="cartList"></ul>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="checkout()">Checkout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
-</html>
+
+    
